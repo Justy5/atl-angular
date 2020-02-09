@@ -1,0 +1,59 @@
+{
+  "key": "test-add-on",
+  "name": "Some name",
+  "description": "My very first add-on",
+  "enableLicensing": true,
+  "vendor": {
+    "name": "Test",
+    "url": "https://test.com"
+  },
+  "baseUrl": "https://devs3.saasjet.com",
+  "links": {
+    "self": "https://devs1.saasjet.com/atlassian-connect.json",
+    "homepage": "https://devs1.saasjet.com/atlassian-connect.json"
+  },
+  "authentication": {
+    "type": "jwt"
+  },
+  "lifecycle": {
+    "installed": "/installed",
+    "uninstalled": "/uninstalled"
+  },
+  "scopes": [
+    "READ",
+    "ACT_AS_USER"
+  ],
+  "modules": {
+    "webSections": [
+      {
+        "key": "example-menu-section",
+        "location": "admin_plugins_menu",
+        "name": {
+          "value": "Test"
+        }
+      }
+    ],
+    "postInstallPage": {
+      "key": "getting-started",
+      "url": "/getting-started",
+      "name": {
+        "value": "Get started"
+      }
+    },
+    "generalPages": [
+      {
+        "key": "test",
+        "location": "system.top.navigation.bar",
+        "name": {
+          "value": "Test"
+        },
+        "url": "/main-page",
+        "conditions": [
+          {
+            "condition": "user_is_logged_in"
+          }
+        ]
+      }
+    ]
+  }
+}

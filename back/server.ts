@@ -1,7 +1,11 @@
-import app from './app';
+import {App} from './app';
+import * as http from 'http';
+import * as os from 'os';
 
-const PORT = 3000;
+let application:App = new App();
 
-app.listen(PORT, ()=> {
-   console.log("Express server listening on port: " + PORT);
+http.createServer(application.app).listen(application.port, function() {
+    console.log('Add-on server running at http://' + os.hostname() + ':' + application.port);
+    // Enables auto registration/de-registration of add-ons into a host in dev mode
+    // application.addon.register();
 });

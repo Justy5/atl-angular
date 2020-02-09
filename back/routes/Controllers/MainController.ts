@@ -1,4 +1,5 @@
 import {Get, HttpCode, Render, HttpError, JsonController, OnUndefined, Param, Post, Req, Res, ContentType, UseBefore} from "routing-controllers";
+import * as path from "path";
 import * as fs from "fs";
 import {Request, Response} from "express";
 import {ObjectId} from "bson";
@@ -14,12 +15,25 @@ import * as ms from 'mediaserver';
     }
     next();
 })
-export class MainController {
+
+export class ACJController {
     // @HttpCode(200)
     // @OnUndefined(404)
     @Get("/")
-    // @Render("./../../../my-app/dist/my-app/index.html")
-    @Render("index.html")
+    // @Render("index.html")
+    @ContentType("application/json")
+    Api(@Res() response:any) {
+        return fs.readFileSync((path.join(__dirname, "..", "..",  "atlassian-connect.json")));
+    }
+}
+
+
+export class MainPageController {
+    // @HttpCode(200)
+    // @OnUndefined(404)
+    @Get("/page")
+    @Render("./../../../my-app/dist/my-app/index.html")
+    // @Render("index.html")
     Api(@Res() response:any) {}
 }
 

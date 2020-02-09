@@ -1,0 +1,24 @@
+{
+  "expressErrorHandling": false,
+  "development": {
+    "port": 3000,
+    "store": {
+      "adapter": "mongodb",
+      "url": "mongodb://127.0.0.1:27017/userStoreTBS",
+      "collection": "AddonSettings"
+    }
+  },
+  "production": {
+    "port": "$PORT",
+    "localBaseUrl": "https://your-subdomain.herokuapp.com",
+    "store": {
+      "dialect": "postgres",
+      "url": "$DATABASE_URL"
+    },
+    "whiteliseclipse-popup-windowt": [
+      "*.jira-dev.com",
+      "*.atlassian.net",
+      "*.jira.com"
+    ]
+  }
+}
